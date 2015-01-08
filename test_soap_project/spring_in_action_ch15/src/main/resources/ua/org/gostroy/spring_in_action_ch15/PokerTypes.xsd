@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified"
+           targetNamespace="http://www.springinaction.com/poker/schemas"
+           xmlns:schemas="http://www.springinaction.com/poker/schemas">
+  <xs:element name="EvaluateHandRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="5" maxOccurs="5" ref="schemas:card"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="card">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="schemas:suit"/>
+        <xs:element ref="schemas:face"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="suit" type="schemas:Suit"/>
+    <xs:simpleType name="Suit">
+        <xsd:restriction base="xs:string">
+            <xsd:enumeration value="SPADES" />
+            <xsd:enumeration value="CLUBS" />
+            <xsd:enumeration value="HEARTS" />
+            <xsd:enumeration value="DIAMONDS" />
+        </xsd:restriction>
+    </xs:simpleType>
+  <xs:element name="face" type="schemas:Face"/>
+    <xs:simpleType name="Face">
+        <xsd:restriction base="xs:string">
+            <xsd:enumeration value="ACE" />
+            <xsd:enumeration value="TWO" />
+            <xsd:enumeration value="THREE" />
+            <xsd:enumeration value="FOUR" />
+            <xsd:enumeration value="FIVE" />
+            <xsd:enumeration value="SIX" />
+            <xsd:enumeration value="SEVEN" />
+            <xsd:enumeration value="EIGHT" />
+            <xsd:enumeration value="NINE" />
+            <xsd:enumeration value="TEN" />
+            <xsd:enumeration value="JACK" />
+            <xsd:enumeration value="QUEEN" />
+            <xsd:enumeration value="KING" />
+        </xsd:restriction>
+    </xs:simpleType>
+  <xs:element name="EvaluateHandResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="schemas:handName"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="handName" type="xs:string"/>
+</xs:schema>
